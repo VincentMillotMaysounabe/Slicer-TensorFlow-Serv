@@ -7,12 +7,12 @@ mail = "test@gmail.com"
 password = "Password&123"
 
 
-def generate_salt(length=16):
+def generate_salt(length: int = 16):
     """Génère un sel aléatoire."""
     return os.urandom(length)
 
 
-def hash_password(password: str, salt=None):
+def hash_password(password: str, salt: str = None) -> [str, str]:
     """Hache un mot de passe avec un sel."""
     if salt is None:
         salt = generate_salt()
@@ -97,7 +97,7 @@ def change_password(mail: str, new_password: str) -> bool:
 
     return True
 
-def create_database():
+def create_database() -> None:
     """Crée la base de données et la table."""
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
